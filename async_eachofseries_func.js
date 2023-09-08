@@ -1,0 +1,18 @@
+// execute sync parse file for each iteration
+import { eachOfSeries} from "async";
+
+let dc = {dev: 'anu', test: 'uio', prod: 'uhnju'};
+let configs = {};
+function parseFile(file, key, callback) {
+    configs[key] = file + " " + file;
+    callback();
+}
+
+
+eachOfSeries(dc, parseFile, function (err) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(configs);
+    }
+});
